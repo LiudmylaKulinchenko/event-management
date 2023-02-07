@@ -1,7 +1,7 @@
 from django.db import transaction
 from rest_framework import serializers
 
-from event.models import EventType, Event, User
+from event.models import EventType, Event
 
 
 class EventTypeSerializer(serializers.ModelSerializer):
@@ -16,13 +16,24 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ("id", "user", "event_type", "info", "timestamp", "created_at")
+        fields = (
+            "id",
+            "user",
+            "event_type",
+            "info",
+            "timestamp",
+            "created_at"
+        )
         read_only_fields = ("id", "user")
 
     def create(self, validated_data):
         with transaction.atomic():
             event_type_name = validated_data.pop("event_type")["name"]
-            event_type = EventType.objects.get_or_create(name=event_type_name)[0]
-            event = Event.objects.create(event_type=event_type, **validated_data)
+            event_type = EventType.objects.get_or_create(
+                name=event_type_name
+            )[0]
+            event = Event.objects.create(
+                event_type=event_type, **validated_data
+            )
 
             return event
