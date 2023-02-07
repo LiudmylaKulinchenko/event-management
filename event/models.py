@@ -1,7 +1,6 @@
 from datetime import datetime
 import uuid
 
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import UniqueConstraint
 
@@ -16,11 +15,6 @@ class EventType(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
-
-class User(AbstractUser):
-    class Meta:
-        ordering = ["username"]
 
 
 class Event(models.Model):

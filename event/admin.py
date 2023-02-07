@@ -1,7 +1,6 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 
-from event.models import EventType, User, Event
+from event.models import EventType, Event
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -11,4 +10,3 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(EventType)
 admin.site.register(Event, EventAdmin)
-admin.site.register(User, UserAdmin)
