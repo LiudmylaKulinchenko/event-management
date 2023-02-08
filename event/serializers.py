@@ -11,7 +11,7 @@ class EventTypeSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
-    user = serializers.CharField(source="user.username", read_only=True)
+    user = serializers.CharField(source="user.email", read_only=True)
     event_type = serializers.CharField(source="event_type.name")
 
     class Meta:
@@ -24,7 +24,6 @@ class EventSerializer(serializers.ModelSerializer):
             "timestamp",
             "created_at"
         )
-        read_only_fields = ("id", "user")
 
     def create(self, validated_data):
         with transaction.atomic():
