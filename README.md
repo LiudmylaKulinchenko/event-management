@@ -26,5 +26,5 @@ What's all the bells and whistles this project can perform?
 
 ## Links
 
-- Project homepage: http://127.0.0.1:8000/
+- Project events page: http://127.0.0.1:8000/api/event/events/
 - Repository: https://github.com/LiudmylaKulinchenko/event-management.git
