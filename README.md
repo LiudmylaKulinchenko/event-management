@@ -11,6 +11,8 @@ cd event-management/  # change directory to the project directory
 python -m venv venv
 venv/Scripts/activate  # create and activate virtual environment
 pip install -r requirements.txt  # install requirements
+python manage.py makemigrations
+python manage.py migrate  # create database
 python manage.py runserver  # starts Django Server
 ```
 
