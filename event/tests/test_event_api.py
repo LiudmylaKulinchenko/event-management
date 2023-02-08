@@ -76,6 +76,21 @@ class UnauthenticatedEventApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
+    def test_create_event_type_denied(self):
+        payload = {"name": "Test event type"}
+
+        res = self.client.post(EVENT_TYPES_URL, payload)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_create_event_denied(self):
+        payload = {
+            "event_type": "Test event type",
+            "timestamp": datetime.now()
+        }
+
+        res = self.client.post(EVENTS_URL, payload)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class AuthenticatedEventApiTests(TestCase):
     def setUp(self):
