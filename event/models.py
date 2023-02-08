@@ -8,7 +8,7 @@ from event_manager import settings
 
 
 class EventType(models.Model):
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, unique=True)
 
     class Meta:
         ordering = ["name"]
