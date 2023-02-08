@@ -22,7 +22,7 @@ class EventSerializer(serializers.ModelSerializer):
             "event_type",
             "info",
             "timestamp",
-            "created_at"
+            "created_at",
         )
 
     def create(self, validated_data):

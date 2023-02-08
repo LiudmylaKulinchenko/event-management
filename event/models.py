@@ -29,7 +29,7 @@ class Event(models.Model):
         on_delete=models.CASCADE,
         related_name="event_types"
     )
-    info = models.JSONField()
+    info = models.JSONField(null=True, blank=True)
     timestamp = models.DateTimeField()
     created_at = models.DateTimeField(auto_now=True)
 

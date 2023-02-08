@@ -1,12 +1,12 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from event.views import EventTypeViewSet, EventViewSet
+from event.views import EventTypeView, EventView
 
-router = routers.DefaultRouter()
-router.register("event-types", EventTypeViewSet)
-router.register("events", EventViewSet)
 
-urlpatterns = [path("", include(router.urls))]
+urlpatterns = [
+    path("events/", EventView.as_view(), name="list-event"),
+    path("event-types/", EventTypeView.as_view(), name="list-event-type"),
+]
 
 app_name = "event"
